@@ -1,11 +1,8 @@
 import React from 'react';
+import CardsContainer from "../CardsContainer";
 
 const RootComponent = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    return (<CardsContainer/>);
 };
 
 export default RootComponent;
