@@ -1,8 +1,9 @@
 import React, {useCallback, useState} from 'react';
-import {Box, Button, Fab, Modal, styled, Typography} from "@mui/material";
+import {Box, Button, ButtonProps, Fab, Modal, styled, Typography} from "@mui/material";
 import {MarketFields} from "../../Types/marketTypes";
 import CloseIcon from '@mui/icons-material/Close';
 import ValidateField from "../ValidateField";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const modalStyle = {
     position: 'absolute' as 'absolute',
@@ -34,18 +35,19 @@ const FabStyle = {
     backgroundColor: '#F2F2F2'
 };
 
-const PurchaseBtn = styled(Button)`
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background-color: #4BCFA0;
-
-  :hover {
-    box-shadow: 24px 24px 40px rgba(75, 207, 160, 0.08);
-  }
-`;
+const PurchaseBtn = styled(Button)<ButtonProps>(({theme}) => ({
+    fontSize: '16px',
+    fontWeight: 500,
+    lineHeight: '24px',
+    letterSpacing: '0.04em',
+    textTransform: 'uppercase',
+    backgroundColor: '#4BCFA0',
+    '&:hover': {
+        backgroundColor: '#50DAA8',
+        boxShadow: 'none',
+        color: '#FFFFFF',
+    },
+}));
 
 interface PropTypes {
     openModal: boolean;
@@ -56,11 +58,11 @@ interface PropTypes {
 const ModalWindow: React.FC<PropTypes> = ({openModal, toggleModal, purchaseItem}) => {
     const [name, setName] = useState<{ name: string, hasError?: boolean }>({name: "", hasError: true});
     const [number, setNumber] = useState<{ number: string, hasError?: boolean }>({number: "", hasError: true});
-    const [manualValidate, setManualValidate] = useState<boolean>(false);
+    const [callValidate, setCallValidate] = useState<boolean>(false);
 
     const handleSubmit = useCallback((e: any) => {
         e.preventDefault();
-        setManualValidate(true);
+        setCallValidate(true);
         if (!name.hasError && !number.hasError) {
             console.log(name, number)
         }
@@ -90,11 +92,11 @@ const ModalWindow: React.FC<PropTypes> = ({openModal, toggleModal, purchaseItem}
                         </Box>
                     </Box>
                     <ValidateField name="Name" required={true} value={name.name} setValue={setName}
-                                   onlyLetters={true} manualValidate={manualValidate}
-                                   setManualValidate={setManualValidate}/>
+                                   onlyLetters={true} callValidate={callValidate}
+                                   setCallValidate={setCallValidate}/>
                     <ValidateField name="Number" required={true} value={number.number} setValue={setNumber}
-                                   onlyNumbers={true} limitation={12} manualValidate={manualValidate}
-                                   setManualValidate={setManualValidate}/>
+                                   onlyNumbers={true} limitation={12} callValidate={callValidate}
+                                   setCallValidate={setCallValidate}/>
                     <PurchaseBtn sx={{my: 3, p: 2,}} type="submit" fullWidth variant="contained">order</PurchaseBtn>
                 </Box>
             </Box>

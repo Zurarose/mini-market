@@ -1,16 +1,15 @@
-import {Box, Button, Card, CardContent, styled, Typography} from "@mui/material";
+import {Box, Button, ButtonProps, Card, CardContent, CardProps, styled, Typography} from "@mui/material";
 import {MarketFields} from "../../../../Types/marketTypes";
 import React from "react";
 
-const CustomizedCard = styled(Card)`
-  border-radius: 24px;
-  box-shadow: none;
-  padding: 1em;
-
-  :hover {
-    box-shadow: 24px 24px 40px rgba(75, 207, 160, 0.08);
-  }
-`;
+const CustomizedCard = styled(Card)<CardProps>(({theme}) => ({
+    borderRadius: '24px',
+    boxShadow: 'none',
+    padding: '1em',
+    '& hover': {
+        boxShadow: '24px 24px 40px #4BCFA014',
+    }
+}));
 
 const CardContentBoxStyle = {
     display: 'flex',
@@ -46,7 +45,7 @@ const ItemCard: React.FC<MarketFields & PropTypes> = ({name, price, category, pu
                             {price}
                         </Typography>
                     </Box>
-                    <Button sx={{m: 1}} onClick={() => purchase({name,price, category})} variant="outlined">BUY</Button>
+                    <Button sx={{m: 1}} onClick={() => purchase({name,price, category})} variant="outlined">buy</Button>
                 </Box>
             </CardContent>
         </CustomizedCard>

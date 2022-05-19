@@ -12,14 +12,13 @@ interface PropTypes {
 }
 
 const MainBox = {
-    height: '100vh',
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '5em',
-    marginTop: '5em'
+    marginTop: '5em',
 };
 
 const Cards: React.FC<PropTypes> = (props) => {

@@ -9,8 +9,8 @@ interface PropTypes {
     onlyNumbers?: boolean;
     onlyLetters?: boolean;
     limitation?: number;
-    manualValidate: boolean;
-    setManualValidate: (value: boolean) => void;
+    callValidate: boolean;
+    setCallValidate: (value: boolean) => void;
 }
 
 const TypographyStyle = {
@@ -18,6 +18,7 @@ const TypographyStyle = {
     fontSize: '12px',
     lineHeight: '16px',
     whiteSpace: 'pre',
+    display: 'inline-block',
 };
 
 const ValidateField: React.FC<PropTypes> = (
@@ -29,8 +30,8 @@ const ValidateField: React.FC<PropTypes> = (
         onlyLetters = false,
         onlyNumbers = false,
         limitation,
-        manualValidate,
-        setManualValidate,
+        callValidate,
+        setCallValidate,
     }) => {
     const [error, setError] = useState<string>(' ');
     const ref = useRef<HTMLInputElement>();
@@ -64,13 +65,13 @@ const ValidateField: React.FC<PropTypes> = (
     }, [limitation, onlyLetters, onlyNumbers, required]);
 
 
-    useEffect(()=> {
-        if (manualValidate && ref.current) {
+    useEffect(() => {
+        if (callValidate && ref.current) {
             validate(ref.current.value);
-            setManualValidate(false);
+            setCallValidate(false);
         }
-    }, [manualValidate, setManualValidate, validate]);
-    
+    }, [callValidate, setCallValidate, validate]);
+
     return (
         <>
             <TextField

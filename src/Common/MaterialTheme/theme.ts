@@ -49,6 +49,11 @@ const defaultTheme = createTheme({
             border: `1px solid #0000001A`,
             borderRadius: '15px',
             color: '#4BCFA0',
+            fontWeight: 500,
+            fontSize: '16px',
+            lineHeight: '24px',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
             '&:hover': {
               backgroundColor: '#4BCFA0',
               color: '#FFFFFF',
@@ -60,7 +65,6 @@ const defaultTheme = createTheme({
           props: { variant: 'contained' },
           style: {
             backgroundColor: '#50DAA8',
-            border: `1px solid #50DAA8`,
             borderRadius: '14px',
             color: '#FFFFFF',
             fontWeight: 400,
@@ -96,7 +100,7 @@ const defaultTheme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         "*, *::before, *::after": {
-          boxSizing: "content-box",
+          boxSizing: "border-box",
         },
       }
     }
