@@ -1,6 +1,6 @@
-import React, {useCallback} from 'react';
 import {Box, Button, Card, CardContent, styled, Typography} from "@mui/material";
 import {MarketFields} from "../../../../Types/marketTypes";
+import React from "react";
 
 const CustomizedCard = styled(Card)`
   border-radius: 24px;
@@ -16,14 +16,17 @@ const CardContentBoxStyle = {
     display: 'flex',
     justifyContent: 'space-between',
     mt: 4
-}
+};
 const CardContentBoxAlign = {
-    display: 'flex',
-    alignContent: 'flex-start',
+    display: 'inherit',
+};
+
+interface PropTypes {
+    purchase: (product: MarketFields) => void;
 }
 
 
-const ItemCard: React.FC<MarketFields> = ({name, price, category}) => {
+const ItemCard: React.FC<MarketFields & PropTypes> = ({name, price, category, purchase}) => {
     return (
         <CustomizedCard>
             <CardContent>
@@ -43,7 +46,7 @@ const ItemCard: React.FC<MarketFields> = ({name, price, category}) => {
                             {price}
                         </Typography>
                     </Box>
-                    <Button sx={{m: 1}} variant="outlined">BUY</Button>
+                    <Button sx={{m: 1}} onClick={() => purchase({name,price, category})} variant="outlined">BUY</Button>
                 </Box>
             </CardContent>
         </CustomizedCard>

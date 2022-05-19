@@ -4,9 +4,9 @@ import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
     MarketPage: MarketReducer,
-})
+});
 
-let store = createStore(rootReducer, applyMiddleware(thunk))
+let store = createStore(rootReducer, applyMiddleware(thunk));
 
 export type AppStateType = ReturnType<typeof rootReducer>
 

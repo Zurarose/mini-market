@@ -46,10 +46,9 @@ const defaultTheme = createTheme({
         {
           props: { variant: 'outlined' },
           style: {
-            border: `1px solid`,
+            border: `1px solid #0000001A`,
             borderRadius: '15px',
             color: '#4BCFA0',
-            borderColor: '#0000001A',
             '&:hover': {
               backgroundColor: '#4BCFA0',
               color: '#FFFFFF',
@@ -61,16 +60,15 @@ const defaultTheme = createTheme({
           props: { variant: 'contained' },
           style: {
             backgroundColor: '#50DAA8',
-            border: `1px solid`,
-            borderRadius: '10px',
+            border: `1px solid #50DAA8`,
+            borderRadius: '14px',
             color: '#FFFFFF',
-            borderColor: '#50DAA8',
             fontWeight: 400,
             fontSize: '24px',
             lineHeight: '28px',
             letterSpacing: '-0.02em',
             textTransform: 'none',
-            padding: '8px 25px 8px 25px',
+            padding: '10px 32px 10px 32px',
             boxShadow: 'none',
             '&:hover': {
               backgroundColor: '#50DAA8',
@@ -80,6 +78,28 @@ const defaultTheme = createTheme({
         },
       ],
     },
+    MuiTextField: {
+      variants: [
+        {
+          props: {variant: 'standard'},
+          style: {
+            borderRadius: '14px',
+            border: `1px solid #0000001A`,
+            padding: 10,
+            '&:hover': {
+              border: `1px solid #4BCFA0`,
+            },
+          },
+        }
+      ]
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
+        "*, *::before, *::after": {
+          boxSizing: "content-box",
+        },
+      }
+    }
   },
 });
 

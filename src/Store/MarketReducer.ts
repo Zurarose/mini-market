@@ -8,7 +8,7 @@ const setStatus = "mini-market/MarketReducer/SET_STATUS";
 const initialState = {
     products: [] as ReadonlyArray<MarketFields>,
     payloadStatus: null as string | null,
-}
+};
 
 type initialStateType = typeof initialState
 
@@ -18,16 +18,16 @@ const MarketReducer = (state = initialState, action: ActionType): initialStateTy
             return {
                 ...state,
                 products: action.payload
-            }
+            };
         case setStatus:
             return {
                 ...state,
                 payloadStatus: action.payload
-            }
+            };
         default:
             return state
     }
-}
+};
 
 type ActionType = getProductsType | getStatusType
 
@@ -41,7 +41,7 @@ export const getProductsAC = (data: Array<MarketFields>): getProductsType => {
         type: setProducts,
         payload: data
     }
-}
+};
 
 interface getStatusType{
     type: typeof setStatus
@@ -53,19 +53,19 @@ export const getStatusAC = (data: string | null): getStatusType => {
         type: setStatus,
         payload: data
     }
-}
+};
 
 export const getProductsThunk = () => {
     return async (dispatch: Dispatch<ActionType>): Promise<void> => {
         try {
-            const result = await MarketApi.getProducts()
-            dispatch(getProductsAC(result))
+            const result = await MarketApi.getProducts();
+            dispatch(getProductsAC(result));
             dispatch(getStatusAC(null))
         } catch (error) {
             const message = (error as Error).message;
             dispatch(getStatusAC(message))
         }
     }
-}
+};
 
 export default MarketReducer
