@@ -6,7 +6,7 @@ const CustomizedCard = styled(Card)<CardProps>(({theme}) => ({
     borderRadius: '24px',
     boxShadow: 'none',
     padding: '1em',
-    '& hover': {
+    '&:hover': {
         boxShadow: '24px 24px 40px #4BCFA014',
     }
 }));
