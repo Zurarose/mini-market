@@ -24,7 +24,6 @@ interface PropTypes {
     purchase: (product: MarketFields) => void;
 }
 
-
 const ItemCard: React.FC<MarketFields & PropTypes> = ({name, price, category, purchase}) => {
     return (
         <CustomizedCard>
