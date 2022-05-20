@@ -42,11 +42,14 @@ const PurchaseBtn = styled(Button)<ButtonProps>(({theme}) => ({
     letterSpacing: '0.04em',
     textTransform: 'uppercase',
     backgroundColor: '#4BCFA0',
-    '&:hover': {
-        backgroundColor: '#50DAA8',
-        boxShadow: 'none',
-        color: '#FFFFFF',
+    "& .icon": {
+        display: "none",
     },
+    "&:hover": {
+        "& .icon": {
+            display: "block"
+        }
+    }
 }));
 
 interface PropTypes {
@@ -96,8 +99,9 @@ const ModalWindow: React.FC<PropTypes> = ({openModal, toggleModal, purchaseItem}
                                    setCallValidate={setCallValidate}/>
                     <ValidateField name="Number" required={true} value={number.number} setValue={setNumber}
                                    onlyNumbers={true} limitation={12} callValidate={callValidate}
-                                   setCallValidate={setCallValidate}/>
-                    <PurchaseBtn sx={{my: 3, p: 2,}} type="submit" fullWidth variant="contained">order</PurchaseBtn>
+                                   setCallValidate={setCallValidate} />
+                    <PurchaseBtn sx={{my: 3, p: 2,}} type="submit" endIcon={<ArrowForwardIcon className='icon'/>}
+                                 fullWidth variant="contained">order</PurchaseBtn>
                 </Box>
             </Box>
         </Modal>

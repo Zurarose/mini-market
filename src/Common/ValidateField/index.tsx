@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {TextField, Typography} from "@mui/material";
+import CancelIcon from '@mui/icons-material/Cancel';
 
 interface PropTypes {
     name: string;
@@ -19,6 +20,10 @@ const TypographyStyle = {
     lineHeight: '16px',
     whiteSpace: 'pre',
     display: 'inline-block',
+};
+
+const IconStyle = {
+    color: '#E43F3F'
 };
 
 const ValidateField: React.FC<PropTypes> = (
@@ -84,7 +89,10 @@ const ValidateField: React.FC<PropTypes> = (
                 onChange={(e) => {
                     setValue({[name.toLowerCase()]: e.target.value})
                 }}
-                InputProps={{disableUnderline: true}}
+                InputProps={{
+                    disableUnderline: true,
+                    endAdornment: <CancelIcon sx={error === ' ' ? {display: 'none'} : IconStyle}/>
+                }}
                 onBlur={(e) => {
                     setValue({[name.toLowerCase()]: e.target.value, hasError: validate(e.target.value)})
                 }}
