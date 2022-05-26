@@ -97,13 +97,6 @@ const defaultTheme = createTheme({
         }
       ]
     },
-    MuiCssBaseline: {
-      styleOverrides: {
-        "*, *::before, *::after": {
-          boxSizing: "border-box",
-        },
-      }
-    }
   },
 });
 

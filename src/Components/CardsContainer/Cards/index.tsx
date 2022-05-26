@@ -51,7 +51,7 @@ const Cards: React.FC<PropTypes> = (props) => {
             })
         }
         props.getProductsThunk()
-    }, [props, setAlert]);
+    }, []);
 
     return (
         <Container>

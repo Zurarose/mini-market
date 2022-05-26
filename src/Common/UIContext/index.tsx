@@ -1,5 +1,5 @@
 import {Alert, Snackbar} from "@mui/material";
-import React, {createContext, useState} from "react";
+import React, {createContext, useState, FC} from "react";
 
 export const UIContext = createContext<UIContextPropsAlert>({} as UIContextPropsAlert);
 
@@ -19,7 +19,7 @@ interface PropTypes {
     children?: React.ReactNode
 }
 
-export const UIContextProvider: React.FC<PropTypes> = ({children}) => {
+export const UIContextProvider: FC<PropTypes> = ({children}) => {
     const [alert, setAlert] = useState<UIContextTypeAlert>({
         show: false,
         severity: 'info',
